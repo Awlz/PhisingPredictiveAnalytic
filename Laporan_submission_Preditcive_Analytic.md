@@ -205,7 +205,7 @@ Phishing URL Detection Results: <br>
 **Legitimate Probability:** 24.91% <br>
 -------------------------------------------------- <br>
 <br>
-**URL:** https://linkdanaa-kaget.webssit3.my.id/int.htmlhttps://1xlite-9231274.top/id/registration?type=email&bonus=SPORT <br>
+<b>URL:</b> https://linkdanaa-kaget.webssit3.my.id/int.htmlhttps://1xlite-9231274.top/id/registration?type=email&bonus=SPORT <br>
 **Prediction:** Phishing <br>
 **Phishing Probability:** 99.48% <br>
 **Legitimate Probability:** 0.52% <br>

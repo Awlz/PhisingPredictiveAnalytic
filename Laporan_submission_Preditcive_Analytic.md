@@ -187,28 +187,28 @@ Fitur yang paling berkontribusi terhadap prediksi adalah qty_slash_url, dengan s
 <br>
 Phishing URL Detection Results: <br>
 <br>
-**URL:** www.google.com <br>
-**Prediction:** Legitimate <br>
-**Phishing Probability:** 34.81% <br>
-**Legitimate Probability:** 65.19% <br>
+<b>URL:</b> www.google.com <br>
+<b>Prediction:</b> Legitimate <br>
+<b>Phishing Probability:</b> 34.81% <br>
+<b>Legitimate Probability:</b> 65.19% <br>
 -------------------------------------------------- <br>
 <br>
-**URL:** http://paypal-verify-account.com/login.php <br>
-**Prediction:** Phishing <br>
-**Phishing Probability:** 96.31% <br>
-**Legitimate Probability:** 3.69% <br>
+<b>URL:</b> http://paypal-verify-account.com/login.php <br>
+<b>Prediction:</b> Phishing <br>
+<b>Phishing Probability:</b> 96.31% <br>
+<b>Legitimate Probability:</b> 3.69% <br>
 -------------------------------------------------- <br>
 <br>
-**URL:** hhttps://link.dana.id/kaget?c=snqw25mpx&r=b7NAEX <br>
-**Prediction:** Phishing <br>
-**Phishing Probability:** 75.09% <br>
-**Legitimate Probability:** 24.91% <br>
+<b>URL:</b> hhttps://link.dana.id/kaget?c=snqw25mpx&r=b7NAEX <br>
+<b>Prediction:</b> Phishing <br>
+<b>Phishing Probability:</b> 75.09% <br>
+<b>Legitimate Probability:</b> 24.91% <br>
 -------------------------------------------------- <br>
 <br>
 <b>URL:</b> https://linkdanaa-kaget.webssit3.my.id/int.htmlhttps://1xlite-9231274.top/id/registration?type=email&bonus=SPORT <br>
-**Prediction:** Phishing <br>
-**Phishing Probability:** 99.48% <br>
-**Legitimate Probability:** 0.52% <br>
+<b>Prediction:</b> Phishing <br>
+<b>Phishing Probability:</b> 99.48% <br>
+<b>Legitimate Probability:</b> 0.52% <br>
 -------------------------------------------------- <br>
 
 ### Daftar Pustaka 

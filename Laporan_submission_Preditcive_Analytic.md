@@ -35,8 +35,8 @@ Data ini tidak memerlukan scraping tambahan karena seluruh fitur sudah diekstrak
 
 Dataset ini sangat relevan dalam studi deteksi phishing karena tidak bergantung pada isi konten halaman, melainkan fokus pada pola URL itu sendiri, yang membuat model lebih ringan dan lebih cepat untuk implementasi real-time.
 
-**Jumlah data:** 58644 data
-**Nilai Null:** Tidak ada
+**Jumlah data:** 58644 data <br>
+**Nilai Null:** Tidak ada <br>
 **Duplikat:** Diperlukan karena variasi data numerik
 
 ### Variabel-variabel pada phishing URL dataset adalah sebagai berikut:

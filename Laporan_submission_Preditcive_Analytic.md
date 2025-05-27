@@ -7,10 +7,8 @@ Phishing merupakan salah satu ancaman siber yang paling signifikan di era digita
 Dalam proyek ini, saya memanfaatkan dataset yang berisi fitur-fitur kuantitatif dari URL, seperti jumlah karakter khusus (misalnya titik, tanda hubung, garis bawah), panjang URL, dan jumlah top-level domain (TLD). Fitur-fitur ini digunakan untuk mengembangkan model klasifikasi yang mampu membedakan antara URL phishing dan URL yang aman dengan akurasi tinggi.
 
 Penelitian sebelumnya telah menunjukkan efektivitas pendekatan ini. Misalnya, studi oleh Kuraku dan Kalla (2023) mengevaluasi berbagai algoritma ML, termasuk Logistic Regression, K-Nearest Neighbors, Decision Trees, Random Forests, dan Support Vector Machines, dalam mendeteksi URL phishing. Hasilnya menunjukkan bahwa model ML dapat mencapai tingkat akurasi yang tinggi dalam klasifikasi URL phishing. 
-SSRN
 
 Lebih lanjut, penelitian oleh Islam et al. (2024) mengembangkan model berbasis Convolutional Neural Network (CNN) yang tidak hanya mencapai akurasi tinggi tetapi juga menyediakan analisis explainability, membantu memahami fitur-fitur yang paling berkontribusi dalam deteksi phishing. 
-arXiv
 
 Dengan mengembangkan sistem deteksi phishing berbasis machine learning yang memanfaatkan fitur-fitur struktural dari URL, proyek ini bertujuan untuk menyediakan alat yang efektif dan efisien dalam melindungi pengguna dari ancaman phishing yang terus berkembang. Implementasi sistem semacam ini dapat secara signifikan meningkatkan keamanan siber, terutama dalam konteks di mana serangan phishing menjadi semakin kompleks dan sulit dideteksi dengan metode tradisional.
 

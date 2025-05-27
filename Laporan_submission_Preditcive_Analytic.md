@@ -183,6 +183,33 @@ Model diuji pada data yang telah di-split menjadi data latih dan data uji. Setel
 ![Importance Feature](./image/feature_importance.png)
 Fitur yang paling berkontribusi terhadap prediksi adalah qty_slash_url, dengan skor lebih dari 0.40, menunjukkan bahwa jumlah garis miring (/) dalam URL merupakan indikator paling kuat untuk mendeteksi phishing. Diikuti oleh length_url, yang menunjukkan bahwa URL phishing cenderung lebih panjang dari URL aman. Fitur lain seperti special_char_ratio, qty_hyphen_url, dan qty_dot_url juga memberikan kontribusi signifikan, yang secara umum mendukung temuan bahwa URL phishing sering kali memiliki struktur yang kompleks dan banyak menggunakan karakter khusus. Sebaliknya, fitur seperti qty_dollar_url, qty_tilde_url, dan qty_comma_url hampir tidak memberikan kontribusi, menunjukkan bahwa simbol-simbol tersebut jarang digunakan dalam URL phishing atau tidak cukup membedakan.
 
+### Hasil Inference:
+Phishing URL Detection Results:
+==================================================
+
+URL: www.google.com
+Prediction: Legitimate
+Phishing Probability: 34.81%
+Legitimate Probability: 65.19%
+--------------------------------------------------
+
+URL: http://paypal-verify-account.com/login.php
+Prediction: Phishing
+Phishing Probability: 96.31%
+Legitimate Probability: 3.69%
+--------------------------------------------------
+
+URL: hhttps://link.dana.id/kaget?c=snqw25mpx&r=b7NAEX
+Prediction: Phishing
+Phishing Probability: 75.09%
+Legitimate Probability: 24.91%
+--------------------------------------------------
+
+URL: https://linkdanaa-kaget.webssit3.my.id/int.htmlhttps://1xlite-9231274.top/id/registration?type=email&bonus=SPORT
+Prediction: Phishing
+Phishing Probability: 99.48%
+Legitimate Probability: 0.52%
+
 ### Daftar Pustaka
 Kuraku, S. and Kalla, D., 2023. Phishing website URL’s detection using NLP and machine learning techniques. Journal on Artificial Intelligence - Tech Science. Available at: SSRN [https://ssrn.com/abstract=4666805]
 

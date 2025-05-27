@@ -133,7 +133,8 @@ Dalam proyek ini, digunakan beberapa metrik evaluasi penting untuk mengukur perf
 
 #### 1. Accuracy (Akurasi)
 - Definisi: Proporsi prediksi yang benar dari seluruh prediksi.
-- Formula: ![Formula Akurasi](./image/accuracy.png)
+- Formula:
+  ![Formula Akurasi](./image/accuracy.png)
 - ​Kelebihan: Mudah dipahami, namun tidak cocok jika data tidak seimbang.
 
 #### 2. Precision
@@ -143,12 +144,14 @@ Dalam proyek ini, digunakan beberapa metrik evaluasi penting untuk mengukur perf
 
 #### 3. Recall (Sensitivity / True Positive Rate)
 - Definisi: Proporsi data positif yang berhasil dikenali.
-- Formula: - Formula: ![Formula Recall](./image/recall.png)
+- Formula:
+  ![Formula Recall](./image/recall.png)
 - Kegunaan: Menjawab pertanyaan: "Dari semua phishing yang ada, berapa banyak yang berhasil dideteksi?"
 
 #### 4. F1-Score
 - Definisi: Harmonik rata-rata dari precision dan recall. Digunakan ketika penting untuk menyeimbangkan keduanya.
-- Formula: - Formula: ![Formula F1  Score](./image/f1_score.png)
+- Formula:
+   ![Formula F1  Score](./image/f1_score.png)
 - Kegunaan: Sangat berguna pada data yang tidak seimbang, seperti kasus phishing detection.
 
 ### Hasil Evaluasi Proyek

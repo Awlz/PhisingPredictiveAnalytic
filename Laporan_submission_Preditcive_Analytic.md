@@ -91,7 +91,7 @@ Mereduksi dimensi data agar berada di antara sekala 0 - 1.
 
 ## Modeling
 ### a. Logistic Regression
-Logistic Regression memodelkan hubungan antara variabel input dan target dengan menggunakan fungsi logistik (sigmoid). Model ini menghasilkan probabilitas suatu data termasuk ke dalam kelas tertentu. Logistic Regression bekerja baik ketika relasi antara fitur dan label bersifat linear.
+Logistic Regression memodelkan hubungan antara variabel input dan target dengan menggunakan fungsi logistik (sigmoid). Model ini menghasilkan probabilitas suatu data termasuk ke dalam kelas tertentu. Logistic Regression bekerja baik ketika relasi antara fitur dan label bersifat linear. <br>
 **Parameter:**
 * max_iter=1000: Untuk memastikan konvergensi.
 * random_state=42: Untuk reprodusibilitas.
@@ -105,7 +105,7 @@ Logistic Regression memodelkan hubungan antara variabel input dan target dengan 
 * Kurang optimal untuk data kompleks.
 
 ### b. Support Vector Machine (SVM)
-SVM bekerja dengan mencari hyperplane terbaik yang memisahkan dua kelas data. Untuk kasus data tidak linear, kernel trick digunakan untuk memproyeksikan data ke ruang berdimensi lebih tinggi sehingga menjadi linear-separable.
+SVM bekerja dengan mencari hyperplane terbaik yang memisahkan dua kelas data. Untuk kasus data tidak linear, kernel trick digunakan untuk memproyeksikan data ke ruang berdimensi lebih tinggi sehingga menjadi linear-separable. <br>
 **Parameter:**
 * probability=True: Agar bisa mengeluarkan probabilitas untuk ROC dan AUC.
 * random_state=42: Konsistensi hasil.
@@ -119,7 +119,7 @@ SVM bekerja dengan mencari hyperplane terbaik yang memisahkan dua kelas data. Un
 * Parameter tuning (kernel, C, gamma) penting namun kompleks.
 
 ### c. Random Forest Classifier + GridSearchCV
-Random Forest adalah algoritma ensemble yang terdiri dari banyak pohon keputusan. Masing-masing pohon dilatih menggunakan subset data dan fitur (bagging). Hasil akhir diperoleh dari voting mayoritas.
+Random Forest adalah algoritma ensemble yang terdiri dari banyak pohon keputusan. Masing-masing pohon dilatih menggunakan subset data dan fitur (bagging). Hasil akhir diperoleh dari voting mayoritas. <br>
 **Parameter yang digunakan:**
 Tuning dilakukan menggunakan GridSearchCV dengan cv=5. Hasil parameter terbaik yang diperoleh adalah:
 * n_estimators = 200,

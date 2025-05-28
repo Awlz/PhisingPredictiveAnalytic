@@ -62,19 +62,19 @@ Dataset ini sangat relevan dalam studi deteksi phishing karena tidak bergantung 
 
 ## EDA (Exploratory Data Analysis)
 - Memeriksa Distribusi Fitur Numerik
-![Distribusi Fitur](./image/distribusi_fitur.png)
+![Distribusi Fitur](image/distribusi_fitur.png)
 Hampir semua fitur memiliki distribusi yang sangat miring ke kanan (right-skewed), artinya mayoritas nilainya rendah (dekat 0), dengan sebagian kecil yang bernilai tinggi.
 
 - Memeriksa Distribusi Label
-![Distribusi Label](./image/distribusi_phishing.png)
+![Distribusi Label](image/distribusi_phishing.png)
 Jumlah sampel dari kedua kelas relatif seimbang, dengan URL phishing sedikit lebih banyak dari legitimate. Keseimbangan ini penting dalam pemodelan klasifikasi karena membantu mencegah bias model terhadap salah satu kelas, sehingga model dapat belajar membedakan phishing dan legitimate URL secara lebih adil dan efektif.
 
 - Memeriksa Korelasi Antar Fitur dengan Label
-![Matrix Korelasi](./image/correlation_matrix.png)
+![Matrix Korelasi](image/correlation_matrix.png)
 Korelasi ditampilkan dalam skala -1 hingga 1, dengan warna merah tua menunjukkan korelasi kuat positif. Secara umum, beberapa fitur saling berkorelasi tinggi, seperti qty_equal_url dengan qty_questionmark_url (0.89) dan qty_and_url (0.89), serta length_url yang cukup berkorelasi dengan banyak fitur (misalnya dengan qty_slash_url, qty_equal_url, dll.). Terhadap label phishing, fitur yang menunjukkan korelasi paling tinggi adalah qty_slash_url (0.60) dan length_url (0.38), menandakan bahwa URL phishing cenderung lebih panjang dan memiliki lebih banyak tanda garis miring.
 
 - Distribusi Fitur Penting Terhadap Label
-![Distribusi Fitur ke Label](./image/feature_distribution.png)
+![Distribusi Fitur ke Label](image/feature_distribution.png)
 Boxplot distribusi menampilkan beberapa fitur URL berdasarkan label phishing, di mana 0 mewakili URL legit dan 1 untuk URL phishing. Secara umum, sebagian besar fitur seperti qty_slash_url, length_url, qty_equal_url, qty_dot_url, dan qty_hyphen_url cenderung memiliki nilai median dan sebaran lebih tinggi pada URL phishing dibandingkan URL legit. Hal ini mengindikasikan bahwa URL phishing sering kali memiliki struktur yang lebih kompleks dan mencurigakan, seperti lebih banyak simbol khusus (/, -, =, ., dll.) dan panjang URL yang lebih tinggi, yang dapat dimanfaatkan sebagai indikator penting dalam klasifikasi phishing.
 
 
@@ -91,6 +91,7 @@ Mereduksi dimensi data agar berada di antara sekala 0 - 1.
 
 ## Modeling
 ### a. Logistic Regression
+Logistic Regression memodelkan hubungan antara variabel input dan target dengan menggunakan fungsi logistik (sigmoid). Model ini menghasilkan probabilitas suatu data termasuk ke dalam kelas tertentu. Logistic Regression bekerja baik ketika relasi antara fitur dan label bersifat linear.
 **Parameter:**
 * max_iter=1000: Untuk memastikan konvergensi.
 * random_state=42: Untuk reprodusibilitas.
@@ -104,6 +105,7 @@ Mereduksi dimensi data agar berada di antara sekala 0 - 1.
 * Kurang optimal untuk data kompleks.
 
 ### b. Support Vector Machine (SVM)
+SVM bekerja dengan mencari hyperplane terbaik yang memisahkan dua kelas data. Untuk kasus data tidak linear, kernel trick digunakan untuk memproyeksikan data ke ruang berdimensi lebih tinggi sehingga menjadi linear-separable.
 **Parameter:**
 * probability=True: Agar bisa mengeluarkan probabilitas untuk ROC dan AUC.
 * random_state=42: Konsistensi hasil.
@@ -117,11 +119,13 @@ Mereduksi dimensi data agar berada di antara sekala 0 - 1.
 * Parameter tuning (kernel, C, gamma) penting namun kompleks.
 
 ### c. Random Forest Classifier + GridSearchCV
-**Tuning melalui GridSearchCV:**
-* Menggunakan parameter grid (tidak ditampilkan lengkap di sel, tapi diasumsikan seperti n_estimators, max_depth, dsb).
-* cv=5: K-fold cross-validation.
-* scoring='accuracy': Skor evaluasi.
-* n_jobs=-1: Menggunakan seluruh core CPU.
+Random Forest adalah algoritma ensemble yang terdiri dari banyak pohon keputusan. Masing-masing pohon dilatih menggunakan subset data dan fitur (bagging). Hasil akhir diperoleh dari voting mayoritas.
+**Parameter yang digunakan:**
+Tuning dilakukan menggunakan GridSearchCV dengan cv=5. Hasil parameter terbaik yang diperoleh adalah:
+* n_estimators = 200,
+* max_depth (maksimal kedalaman pohon) = 20
+* min_samples_split = 2,
+* min_samples_leaf = 1
 
 **Kelebihan:**
 * Tangguh terhadap overfitting.
@@ -138,49 +142,50 @@ Dalam proyek ini, digunakan beberapa metrik evaluasi penting untuk mengukur perf
 #### 1. Accuracy (Akurasi)
 - Definisi: Proporsi prediksi yang benar dari seluruh prediksi.
 - Formula: <br>
-  ![Formula Akurasi](./image/accuracy.png)
+  ![Formula Akurasi](image/accuracy.png)
 - ​Kelebihan: Mudah dipahami, namun tidak cocok jika data tidak seimbang.
 
 #### 2. Precision
 - Definisi: Proporsi prediksi positif yang benar-benar positif.
 - Formula: <br>
-- ![Formula Presisi](./image/precision.png)
+- ![Formula Presisi](image/precision.png)
 - Kegunaan: Menjawab pertanyaan: "Dari semua yang diprediksi sebagai phishing, berapa yang benar-benar phishing?"
 
 #### 3. Recall (Sensitivity / True Positive Rate)
 - Definisi: Proporsi data positif yang berhasil dikenali.
 - Formula: <br>
-  ![Formula Recall](./image/recall.png)
+  ![Formula Recall](image/recall.png)
 - Kegunaan: Menjawab pertanyaan: "Dari semua phishing yang ada, berapa banyak yang berhasil dideteksi?"
 
 #### 4. F1-Score
 - Definisi: Harmonik rata-rata dari precision dan recall. Digunakan ketika penting untuk menyeimbangkan keduanya.
 - Formula: <br>
-   ![Formula F1  Score](./image/f1_score.png)
+   ![Formula F1  Score](image/f1_score.png)
 - Kegunaan: Sangat berguna pada data yang tidak seimbang, seperti kasus phishing detection.
 
 ### Hasil Evaluasi Proyek
-Model diuji pada data yang telah di-split menjadi data latih dan data uji. Setelah pelatihan dan tuning, performa model dievaluasi. Berikut ringkasan hasilnya:
+Model dievaluasi menggunakan data uji setelah proses pelatihan dan tuning. Evaluasi dilakukan berdasarkan metrik utama yaitu accuracy, precision, recall, dan F1-score. Berikut ringkasan performa dari masing-masing model:
 
 #### 1. Logistic Regression
-- Akurasi: Baik, namun cenderung lebih rendah dibanding model lainnya.
-- Precision: Tinggi untuk kelas negatif, tapi recall rendah → masih banyak phishing yang lolos deteksi.
-- Cocok jika tujuan utamanya adalah menghindari false positive.
-
+- Mencapai akurasi sebesar 83.72%.
+- Precision sebesar 82.45%, menunjukkan proporsi prediksi phishing yang benar-benar phishing.
+- Recall mencapai 84.51%, menandakan bahwa model mampu mendeteksi sebagian besar URL phishing.
+- F1-score berada di angka 83.47%, mencerminkan keseimbangan antara precision dan recall.
+  
 #### 2. SVM (Support Vector Machine)
-- Precision & Recall: Seimbang tapi tidak menonjol.
-- Cenderung lebih lambat, namun memiliki margin yang bagus di data berdimensi tinggi.
-- F1-score stabil, namun kalah dibanding Random Forest.
+- Menunjukkan akurasi sebesar 85.18%.
+- Precision sebesar 84.12%, sedikit lebih tinggi dari Logistic Regression.
+- Recall mencapai 86.01%, menunjukkan kemampuan deteksi phishing yang baik.
+- F1-score sebesar 85.05%, sedikit lebih unggul dibanding Logistic Regression.
 
 #### 3. Random Forest (Best Model)
-- Hasil evaluasi setelah GridSearchCV menunjukkan:
-- Accuracy tinggi (>90%)
-- Precision dan Recall seimbang untuk kelas phishing dan bukan phishing.
-- F1-score tertinggi dibanding model lain.
-- Selain itu, Random Forest memberikan feature importance, yang membantu memahami atribut mana yang paling berpengaruh dalam mendeteksi phishing.
-
+- Memberikan akurasi tertinggi sebesar 86.48%.
+- Precision sebesar 85.93%, menunjukkan akurasi tinggi dalam mendeteksi phishing dengan minim false positive.
+- Recall sebesar 87.23%, menunjukkan model sangat baik dalam menemukan URL phishing.
+- F1-score tertinggi sebesar 86.57%, menjadikannya model dengan performa paling seimbang dan unggul di antara ketiga algoritma.
+- 
 ### Fitur Penting yang Relevan
-![Importance Feature](./image/feature_importance.png)
+![Importance Feature](image/feature_importance.png)
 Fitur yang paling berkontribusi terhadap prediksi adalah qty_slash_url, dengan skor lebih dari 0.40, menunjukkan bahwa jumlah garis miring (/) dalam URL merupakan indikator paling kuat untuk mendeteksi phishing. Diikuti oleh length_url, yang menunjukkan bahwa URL phishing cenderung lebih panjang dari URL aman. Fitur lain seperti special_char_ratio, qty_hyphen_url, dan qty_dot_url juga memberikan kontribusi signifikan, yang secara umum mendukung temuan bahwa URL phishing sering kali memiliki struktur yang kompleks dan banyak menggunakan karakter khusus. Sebaliknya, fitur seperti qty_dollar_url, qty_tilde_url, dan qty_comma_url hampir tidak memberikan kontribusi, menunjukkan bahwa simbol-simbol tersebut jarang digunakan dalam URL phishing atau tidak cukup membedakan.
 
 ### Hasil Inference:

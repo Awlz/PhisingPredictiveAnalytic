@@ -183,7 +183,7 @@ Model dievaluasi menggunakan data uji setelah proses pelatihan dan tuning. Evalu
 - Precision sebesar 85.93%, menunjukkan akurasi tinggi dalam mendeteksi phishing dengan minim false positive.
 - Recall sebesar 87.23%, menunjukkan model sangat baik dalam menemukan URL phishing.
 - F1-score tertinggi sebesar 86.57%, menjadikannya model dengan performa paling seimbang dan unggul di antara ketiga algoritma.
-- 
+  
 ### Fitur Penting yang Relevan
 ![Importance Feature](image/feature_importance.png)
 Fitur yang paling berkontribusi terhadap prediksi adalah qty_slash_url, dengan skor lebih dari 0.40, menunjukkan bahwa jumlah garis miring (/) dalam URL merupakan indikator paling kuat untuk mendeteksi phishing. Diikuti oleh length_url, yang menunjukkan bahwa URL phishing cenderung lebih panjang dari URL aman. Fitur lain seperti special_char_ratio, qty_hyphen_url, dan qty_dot_url juga memberikan kontribusi signifikan, yang secara umum mendukung temuan bahwa URL phishing sering kali memiliki struktur yang kompleks dan banyak menggunakan karakter khusus. Sebaliknya, fitur seperti qty_dollar_url, qty_tilde_url, dan qty_comma_url hampir tidak memberikan kontribusi, menunjukkan bahwa simbol-simbol tersebut jarang digunakan dalam URL phishing atau tidak cukup membedakan.

@@ -35,7 +35,7 @@ Data ini tidak memerlukan scraping tambahan karena seluruh fitur sudah diekstrak
 
 Dataset ini sangat relevan dalam studi deteksi phishing karena tidak bergantung pada isi konten halaman, melainkan fokus pada pola URL itu sendiri, yang membuat model lebih ringan dan lebih cepat untuk implementasi real-time.
 
-**Jumlah data:** 58644 data <br>
+**Jumlah data:** 58645 data <br>
 **Nilai Null:** Tidak ada <br>
 **Duplikat:** Diperlukan karena variasi data numerik
 
@@ -51,6 +51,7 @@ Dataset ini sangat relevan dalam studi deteksi phishing karena tidak bergantung 
 - qty_exclamation_url : variabel jumlah dari tanda seru (!) pada link URL.
 - qty_space_url : variabel jumlah dari bagian kosong (space) pada link URL.
 - qty_comma_url : variabel jumlah dari tanda koma (,) pada link URL.
+- qty_tilde_url : variabel jumlah dari tanda tilde (~) pada link URL.
 - qty_plus_url : variabel jumlah dari tanda tambah (+) pada link URL.
 - qty_asterisk_url : variabel jumlah dari tanda bintang (*) pada link URL.
 - qty_hashtag_url : variabel jumlah dari tanda pagar (#) pada link URL.
@@ -79,6 +80,8 @@ Boxplot distribusi menampilkan beberapa fitur URL berdasarkan label phishing, di
 
 
 ## Data Preprocessing: 
+- Feature Engineering Consideration
+Menghitung rasio total karakter khusus dalam URL terhadap panjang URL (length_url). Karakter khusus yang dimaksud mencakup berbagai simbol seperti titik (.), garis (-), garis bawah (_), garis miring (/), tanda tanya (?), tanda sama dengan (=), dan simbol lainnya yang umum digunakan dalam URL mencurigakan. Rasio ini memberikan gambaran seberapa padat simbol-simbol mencurigakan muncul dalam sebuah URL. Setelah fitur dihitung, nilai korelasi antara special_char_ratio dan label target (phishing) ditampilkan untuk mengukur sejauh mana fitur ini berhubungan dengan kemungkinan URL tersebut adalah phishing. 
 - Feature Selection
 Memilih fitur yang relevan untuk proses training
 - Splitting Data
@@ -122,10 +125,12 @@ SVM bekerja dengan mencari hyperplane terbaik yang memisahkan dua kelas data. Un
 Random Forest adalah algoritma ensemble yang terdiri dari banyak pohon keputusan. Masing-masing pohon dilatih menggunakan subset data dan fitur (bagging). Hasil akhir diperoleh dari voting mayoritas. <br>
 **Parameter yang digunakan:**
 Tuning dilakukan menggunakan GridSearchCV dengan cv=5. Hasil parameter terbaik yang diperoleh adalah:
-* n_estimators = 200,
+* bootstrap: False
+* n_estimators = 100
+* max_features: sqrt
 * max_depth (maksimal kedalaman pohon) = 20
-* min_samples_split = 2,
-* min_samples_leaf = 1
+* min_samples_split = 5,
+* min_samples_leaf = 2
 
 **Kelebihan:**
 * Tangguh terhadap overfitting.
@@ -166,23 +171,23 @@ Dalam proyek ini, digunakan beberapa metrik evaluasi penting untuk mengukur perf
 ### Hasil Evaluasi Proyek
 Model dievaluasi menggunakan data uji setelah proses pelatihan dan tuning. Evaluasi dilakukan berdasarkan metrik utama yaitu accuracy, precision, recall, dan F1-score. Berikut ringkasan performa dari masing-masing model:
 
-#### 1. Logistic Regression
-- Mencapai akurasi sebesar 83.72%.
-- Precision sebesar 82.45%, menunjukkan proporsi prediksi phishing yang benar-benar phishing.
-- Recall mencapai 84.51%, menandakan bahwa model mampu mendeteksi sebagian besar URL phishing.
-- F1-score berada di angka 83.47%, mencerminkan keseimbangan antara precision dan recall.
+#### 1. Logistic Regression (weighted avg)
+- Mencapai akurasi sebesar 0,81.
+- Precision sebesar 0,82 menunjukkan proporsi prediksi phishing yang benar-benar phishing.
+- Recall mencapai 0,81 menandakan bahwa model mampu mendeteksi sebagian besar URL phishing.
+- F1-score berada di angka 0,81 mencerminkan keseimbangan antara precision dan recall.
   
-#### 2. SVM (Support Vector Machine)
-- Menunjukkan akurasi sebesar 85.18%.
-- Precision sebesar 84.12%, sedikit lebih tinggi dari Logistic Regression.
-- Recall mencapai 86.01%, menunjukkan kemampuan deteksi phishing yang baik.
-- F1-score sebesar 85.05%, sedikit lebih unggul dibanding Logistic Regression.
+#### 2. SVM (Support Vector Machine - weighted avg)
+- Menunjukkan akurasi sebesar 0,84
+- Precision sebesar 0,85 sedikit lebih tinggi dari Logistic Regression.
+- Recall mencapai 0,85 menunjukkan kemampuan deteksi phishing yang baik.
+- F1-score sebesar 0,85 sedikit lebih unggul dibanding Logistic Regression.
 
-#### 3. Random Forest (Best Model)
-- Memberikan akurasi tertinggi sebesar 86.48%.
-- Precision sebesar 85.93%, menunjukkan akurasi tinggi dalam mendeteksi phishing dengan minim false positive.
-- Recall sebesar 87.23%, menunjukkan model sangat baik dalam menemukan URL phishing.
-- F1-score tertinggi sebesar 86.57%, menjadikannya model dengan performa paling seimbang dan unggul di antara ketiga algoritma.
+#### 3. Random Forest (Best Model - weighted avg)
+- Memberikan akurasi tertinggi sebesar 0,86
+- Precision sebesar 0,86 menunjukkan akurasi tinggi dalam mendeteksi phishing dengan minim false positive.
+- Recall sebesar 0,86 menunjukkan model sangat baik dalam menemukan URL phishing.
+- F1-score tertinggi sebesar 0,86 menjadikannya model dengan performa paling seimbang dan unggul di antara ketiga algoritma.
   
 ### Fitur Penting yang Relevan
 ![Importance Feature](image/feature_importance.png)

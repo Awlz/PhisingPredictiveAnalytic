@@ -80,15 +80,15 @@ Boxplot distribusi menampilkan beberapa fitur URL berdasarkan label phishing, di
 
 
 ## Data Preprocessing: 
-- Feature Engineering Consideration
+- Feature Engineering Consideration <br>
 Menghitung rasio total karakter khusus dalam URL terhadap panjang URL (length_url). Karakter khusus yang dimaksud mencakup berbagai simbol seperti titik (.), garis (-), garis bawah (_), garis miring (/), tanda tanya (?), tanda sama dengan (=), dan simbol lainnya yang umum digunakan dalam URL mencurigakan. Rasio ini memberikan gambaran seberapa padat simbol-simbol mencurigakan muncul dalam sebuah URL. Setelah fitur dihitung, nilai korelasi antara special_char_ratio dan label target (phishing) ditampilkan untuk mengukur sejauh mana fitur ini berhubungan dengan kemungkinan URL tersebut adalah phishing. 
-- Feature Selection
+- Feature Selection <br>
 Memilih fitur yang relevan untuk proses training
-- Splitting Data
+- Splitting Data <br>
 Membagi data menjadi data latih dan data tes dengan rasio 8:2.
-- Handling Imbalance Class
+- Handling Imbalance Class <br>
 Menangani label yang tidak seimbang menggunakan teknik SMOTE
-- Feature Scaling
+- Feature Scaling <br>
 Mereduksi dimensi data agar berada di antara sekala 0 - 1.
 
 

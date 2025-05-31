@@ -66,7 +66,7 @@ Dataset ini sangat relevan dalam studi deteksi phishing karena tidak bergantung 
 ![Distribusi Fitur](image/distribusi_fitur.png)
 Hampir semua fitur memiliki distribusi yang sangat miring ke kanan (right-skewed), artinya mayoritas nilainya rendah (dekat 0), dengan sebagian kecil yang bernilai tinggi.
 
-- Memeriksa Distribusi Label
+- Memeriksa Distribusi Label <br>
 ![Distribusi Label](image/distribusi_phishing.png)
 Jumlah sampel dari kedua kelas relatif seimbang, dengan URL phishing sedikit lebih banyak dari legitimate. Keseimbangan ini penting dalam pemodelan klasifikasi karena membantu mencegah bias model terhadap salah satu kelas, sehingga model dapat belajar membedakan phishing dan legitimate URL secara lebih adil dan efektif.
 

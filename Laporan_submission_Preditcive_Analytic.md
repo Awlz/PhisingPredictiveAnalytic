@@ -178,7 +178,7 @@ Model dievaluasi menggunakan data uji setelah proses pelatihan dan tuning. Evalu
 - F1-score berada di angka 0,81 mencerminkan keseimbangan antara precision dan recall.
   
 #### 2. SVM (Support Vector Machine - weighted avg)
-- Menunjukkan akurasi sebesar 0,84
+- Menunjukkan akurasi sebesar 0,85
 - Precision sebesar 0,85 sedikit lebih tinggi dari Logistic Regression.
 - Recall mencapai 0,85 menunjukkan kemampuan deteksi phishing yang baik.
 - F1-score sebesar 0,85 sedikit lebih unggul dibanding Logistic Regression.
